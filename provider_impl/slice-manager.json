@@ -1,0 +1,362 @@
+{
+    "apiName": "slice-manager",
+    "aefProfiles": [
+        {
+            "aefId": "AEF1f88f739338d9b4432ca94c1355fe3",
+            "versions": [
+                {
+                    "apiVersion": "v1",
+                    "expiry": "2100-11-30T10:32:02.004Z",
+                    "resources": [
+                        {
+                            "resourceName": "List or find ServiceOrder objects",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/serviceOrder/get",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation list or find ServiceOrder entities"
+                        },
+                        {
+                            "resourceName": "Retrieves a ServiceOrder by ID",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/serviceOrder/{id}/get",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation retrieves a ServiceOrder entity. Attribute selection is enabled for all first level attributes."
+                        },
+                        {
+                            "resourceName": "Creates a ServiceOrder",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/serviceOrder/post",
+                            "custOpName": "http_post",
+                            "operations": [
+                                "POST"
+                            ],
+                            "description": "This operation creates a ServiceOrder entity."
+                        },
+                        {
+                            "resourceName": "Deletes a ServiceOrder",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/serviceOrder/{id}/delete",
+                            "custOpName": "http_delete",
+                            "operations": [
+                                "DELETE"
+                            ],
+                            "description": "This operation deletes a ServiceOrder entity"
+                        },
+                        {
+                            "resourceName": "Updates partially a ServiceOrder",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/serviceOrder/{id}/patch",
+                            "custOpName": "http_patch",
+                            "operations": [
+                                "PATCH"
+                            ],
+                            "description": "This operation updates partially a ServiceOrder entity."
+                        },
+                        {
+                            "resourceName": "Retrieves a ServiceOrders with same name",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/serviceOrder/{id}/get_by_name",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation retrieves the ServiceOrder entities with the same name. These slices can be used for dynamic slicing"
+                        },
+                        {
+                            "resourceName": "List or find ProductOrder objects",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/productOrder/get",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation list or find ProductOrder entities"
+                        },
+                        {
+                            "resourceName": "Retrieves a ProductOrder by ID",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/productOrder/{id}/get",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation retrieves a ProductOrder entity. Attribute selection is enabled for all first level attributes."
+                        },
+                        {
+                            "resourceName": "Creates a ProductOrder",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/productOrder/post",
+                            "custOpName": "http_post",
+                            "operations": [
+                                "POST"
+                            ],
+                            "description": "This operation creates a ProductOrder entity."
+                        },
+                        {
+                            "resourceName": "Deletes a ProductOrder",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/productOrder/{id}/delete",
+                            "custOpName": "http_delete",
+                            "operations": [
+                                "DELETE"
+                            ],
+                            "description": "This operation deletes a ProductOrder entity."
+                        },
+                        {
+                            "resourceName": "Updates partially a ProductOrder",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/productOrder/{id}/patch",
+                            "custOpName": "http_patch",
+                            "operations": [
+                                "PATCH"
+                            ],
+                            "description": "This operation updates partially a ProductOrder entity."
+                        },
+                        {
+                            "resourceName": "Retrieves Order allocated IPs",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/OrderIPs/{id}/get",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation list IPs allocated to a ProductOrder or ServiceOrder."
+                        },
+                        {
+                            "resourceName": "List UEs",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/UE/get",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation list all UEs registered"
+                        },
+                        {
+                            "resourceName": "Retrieves UE info by ID",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/UE/{id}/get",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation list info of a specific UE association."
+                        },
+                        {
+                            "resourceName": "Retrieves UE info by IMSI",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/UE/{IMSI}/get_IMSI",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation list info of a specific UE."
+                        },
+                        {
+                            "resourceName": "Retrieves UE info by slice",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/UE/{slice}/get_slice",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation list info of UEs registered in a specific slice."
+                        },
+                        {
+                            "resourceName": "Associates a slice to a UE",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/UE/post",
+                            "custOpName": "http_post",
+                            "operations": [
+                                "POST"
+                            ],
+                            "description": "This operation associates a ServiceOrder or a ProductOrder ID to a UE."
+                        },
+                        {
+                            "resourceName": "Delete a association between a UE and a slice",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/UE/{id}/delete",
+                            "custOpName": "http_delete",
+                            "operations": [
+                                "DELETE"
+                            ],
+                            "description": "This operation deletes an association between a UE and a ServiceOrder or a ProductOrder"
+                        },
+                        {
+                            "resourceName": "Delete all associations between a UE and slices",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/UE/{IMSI}/delete_IMSI",
+                            "custOpName": "http_delete",
+                            "operations": [
+                                "DELETE"
+                            ],
+                            "description": "This operation deletes all association a UE has"
+                        },
+                        {
+                            "resourceName": "Delete all associations to a slices",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/UE/{slice}/delete_slice",
+                            "custOpName": "http_delete",
+                            "operations": [
+                                "DELETE"
+                            ],
+                            "description": "This operation deletes all associations UEs have with a specific slice"
+                        },
+                        {
+                            "resourceName": "Updates association between UE and slice",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/UE/patch",
+                            "custOpName": "http_patch",
+                            "operations": [
+                                "PATCH"
+                            ],
+                            "description": "This operation updates association between UE and slice."
+                        },
+                        {
+                            "resourceName": "Get UE control information",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/UE/{IMSI}/control_info",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation retrieves UE control information from network"
+                        },
+                        {
+                            "resourceName": "Get UE User Plane information",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/UE/{IMSIorIP}/{IMSIIP}/UserPlane_info/{detailed}",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation retrieves UE User Plane information from network"
+                        },
+                        {
+                            "resourceName": "Delete all associations to a slices",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/UE/{IMSI}/remover",
+                            "custOpName": "http_delete",
+                            "operations": [
+                                "DELETE"
+                            ],
+                            "description": "This operation deletes all associations UEs have with a specific slice"
+                        },
+                        {
+                            "resourceName": "Retrieves Antennas state",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/antena/{area}",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation list state of Antennas in a specific area."
+                        },
+                        {
+                            "resourceName": "Activates antenna(s) of specific area",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/antena/{area}",
+                            "custOpName": "http_post",
+                            "operations": [
+                                "POST"
+                            ],
+                            "description": "This operation activates the antenna(s) of a specific area."
+                        },
+                        {
+                            "resourceName": "Deactivates antenna(s) of specific area",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/antena/{area}",
+                            "custOpName": "http_delete",
+                            "operations": [
+                                "DELETE"
+                            ],
+                            "description": "This operation deactivates the antenna(s) of a specific area."
+                        },
+                        {
+                            "resourceName": "Retrieves Antennas configs",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/antena/{area}/control/{info}",
+                            "custOpName": "http_get",
+                            "operations": [
+                                "GET"
+                            ],
+                            "description": "This operation list configs of Antennas in a specific area."
+                        },
+                        {
+                            "resourceName": "Updates antennas configurations",
+                            "commType": "REQUEST_RESPONSE",
+                            "uri": "/antena/{area}/control",
+                            "custOpName": "http_patch",
+                            "operations": [
+                                "PATCH"
+                            ],
+                            "description": "This operation updates configurations of antennas in specific area"
+                        }
+                    ],
+                    "custOperations": [
+                        {
+                            "commType": "REQUEST_RESPONSE",
+                            "custOpName": "string",
+                            "operations": [
+                                "POST"
+                            ],
+                            "description": "string"
+                        },
+                        {
+                            "commType": "REQUEST_RESPONSE",
+                            "custOpName": "check-authentication",
+                            "operations": [
+                                "POST"
+                            ],
+                            "description": "Check authentication request."
+                        },
+                        {
+                            "commType": "REQUEST_RESPONSE",
+                            "custOpName": "revoke-authentication",
+                            "operations": [
+                                "POST"
+                            ],
+                            "description": "Revoke authorization for service APIs."
+                        }
+                    ]
+                }
+            ],
+            "protocol": "HTTP_1_1",
+            "dataFormat": "JSON",
+            "securityMethods": [
+                "OAUTH"
+            ],
+            "interfaceDescriptions": [
+                {
+                    "port": 8000,
+                    "securityMethods": [
+                        "OAUTH"
+                    ],
+                    "ipv4Addr": "10.255.32.139"
+                }
+            ]
+        }
+    ],
+    "description": "A base Project of FastAPI",
+    "supportedFeatures": "0",
+    "shareableInfo": {
+        "isShareable": true,
+        "capifProvDoms": [
+            "string"
+        ]
+    },
+    "serviceAPICategory": "string",
+    "apiSuppFeats": "0",
+    "pubApiPath": {
+        "ccfIds": [
+            "string"
+        ]
+    },
+    "ccfId": "string"
+}
