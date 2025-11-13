@@ -12,10 +12,8 @@ RUN update-ca-certificates && rm -rf /var/lib/apt/lists/* && \
 
 COPY ./invoker_impl/app /app
 
-ENV INVOKER_HOST="127.0.0.1"
+ENV INVOKER_HOST="0.0.0.0"
 ENV INVOKER_PORT="8000"
-ENV INVOKER_LOG_DIRECTORY_PATH="./app/log/"
-ENV INVOKER_LOG_FILENAME_PATH="${LOG_DIRECTORY_PATH}logger"
 
 EXPOSE 8000
 
