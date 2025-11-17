@@ -1,22 +1,14 @@
 import os
 from opencapif_sdk import capif_invoker_connector,service_discoverer
+from app.config import get_settings
 
+# Deprecated: Environment variables now managed centrally via config.py
+# INVOKER_CONFIG_FILE = os.getenv('INVOKER_CONFIG_FILE', 'invoker_config_sample.json')
+# INVOKER_ACCESS_TOKEN_FILE = os.getenv('INVOKER_ACCESS_TOKEN_FILE', 'app/invoker_folder/atnoguser/jwt_token.txt')
 
-INVOKER_CONFIG_FILE = os.getenv('INVOKER_CONFIG_FILE', 'invoker_config_sample.json')
-INVOKER_ACCESS_TOKEN_FILE = os.getenv('INVOKER_ACCESS_TOKEN_FILE', 'app/invoker_folder/atnoguser/jwt_token.txt')
+settings = get_settings()
 
 def _write_to_file(filename, content):
-    """
-    Writes the given content to a file with the specified filename.
-
-    Args:
-        filename (str): The path to the file where the content will be written.
-        content (str): The content to write to the file.
-
-    Side Effects:
-        Creates or overwrites the file at the specified filename with the provided content.
-        Prints a confirmation message indicating the file written to.
-    """
     if os.path.exists(filename):
         os.remove(filename)
 
@@ -41,11 +33,11 @@ def onboard_invoker() -> str:
         Any exceptions raised by the underlying connector or file operations.
     """
 
-    capif_connector = capif_invoker_connector(config_file=INVOKER_CONFIG_FILE)
+    capif_connector = capif_invoker_connector(config_file=settings.invoker_config_file)
 
     capif_connector.onboard_invoker()
 
-    discoverer_svc = service_discoverer(config_file=INVOKER_CONFIG_FILE)
+    discoverer_svc = service_discoverer(config_file=settings.invoker_config_file)
     discoverer_svc.discover()
 
 
@@ -56,4 +48,4 @@ def onboard_invoker() -> str:
 
     # print("JWT TOKEN: ", jwt_token)
 
-    # _write_to_file(INVOKER_ACCESS_TOKEN_FILE, jwt_token)
+    # _write_to_file(settings.invoker_access_token_file, jwt_token)

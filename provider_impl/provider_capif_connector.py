@@ -1,18 +1,13 @@
 import os
 from opencapif_sdk import capif_provider_connector, api_schema_translator
 
-
-#API_HOST = os.getenv('API_HOST', '10.220.2.43')
-#PROVIDER_API_HOST = os.getenv('PROVIDER_API_HOST', '127.0.0.1')
 PROVIDER_API_HOST = os.getenv('PROVIDER_API_HOST', '10.255.32.139')
 PROVIDER_API_PORT = os.getenv('PROVIDER_API_PORT', '8000')
 PROVIDER_CONFIG_FILE = os.getenv('PROVIDER_CONFIG_FILE', './provider_config_sample.json')
 PROVIDER_OPENAPI_FILE = os.getenv('PROVIDER_OPENAPI_FILE', './openapi.yaml')
 PROVIDER_API_DESC_FILE = os.getenv('PROVIDER_API_DESC_FILE', './slice-manager.json') # should match the prefix of the URL
-#API_DESC_FILE = os.getenv('API_DESC_FILE', './provider-app.json') # should match the prefix of the URL
 
 API_URL = f"https://{PROVIDER_API_HOST}:{PROVIDER_API_PORT}/slice-manager/v1"
-#API_URL = f"https://{API_HOST}:{API_PORT}/provider-app/v1"
 
 def showcase_capif_nef_connector_publish():
     """
@@ -24,9 +19,6 @@ def showcase_capif_nef_connector_publish():
     4. Sets the API description path and retrieves CAPIF IDs for APF and AEF.
     5. Prepares the publish request with APF and AEF IDs, and supported features.
     6. Publishes the provider's services to CAPIF.
-    
-    Raises:
-        Any exceptions raised by the connector or translator methods.
     """
 
     capif_connector = capif_provider_connector(config_file=PROVIDER_CONFIG_FILE)
@@ -40,7 +32,6 @@ def showcase_capif_nef_connector_publish():
     capif_connector.api_description_path = PROVIDER_API_DESC_FILE
     apf = capif_connector.provider_capif_ids["APF-1"]
 
-    #TODO enhancne to support a list of AEFs
     aef = capif_connector.provider_capif_ids["AEF-1"]
     
     capif_connector.publish_req['publisher_apf_id'] = apf

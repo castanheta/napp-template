@@ -3,10 +3,13 @@ from typing import Dict, Any, Optional, Tuple
 import requests
 from requests import Response
 
+from app.config import get_settings
 from app.invoker_onboarding.invoker_capif_connector import onboard_invoker
 
 
 class GatewayService:
+    def __init__(self):
+        self.settings = get_settings()
     
     def forward_request(
         self,
@@ -33,8 +36,6 @@ class GatewayService:
             print(f"Successfully onboarded invoker and obtained JWT token")
         except Exception as e:
             print(f"Warning: Failed to onboard invoker: {e}")
-            # Fallback to environment variable if onboarding fails
-            access_token = os.environ.get("ACCESS_TOKEN", "")
         
         headers = {"Authorization": f"Bearer {access_token}"}
         
