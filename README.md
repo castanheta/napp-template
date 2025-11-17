@@ -4,7 +4,7 @@ This repository provides a **template** for integrating the [OpenCAPIF](https://
 
 It demonstrates how to onboard and authenticate **Provider** and **Invoker** applications through OpenCAPIF, using **FastAPI** for both service exposure and consumption.  
 
-The current implementation showcases the **NEF MonitoringEvent API** as an example of a provider app that has been adjusted in order to support integration with the OpenCAPIF template and stored at [FRONT's](https://github.com/FRONT-research-group/NEF) github repo.
+The current implementation showcases the **Slice Manager API** as an example of a provider app that has been adjusted in order to support integration with the OpenCAPIF template and stored at [VLANX's](https://github.com/vlanx/mock-slice-manager) github repo.
 
 ---
 
@@ -37,7 +37,7 @@ The repository includes:
   - `<provider/invoker>_config_sample.json`: Input for onboarding scripts (provider/invoker).
   - `capif_sdk_register.json`: Input for user registration.
   - `openapi.yaml`: The OpenAPI specification for the provider app service (used during service publication).
-  - `.env`: File that includes environmental variables that is used in the bussiness flow for invoker/provider onboarding as well as invoker app. From there, anyone can configure either current location or last known location feature for provider app (NEF).
+  - `.env`: File that includes environmental variables that is used in the bussiness flow for invoker/provider onboarding as well as invoker app. 
 
 ---
 
@@ -129,11 +129,11 @@ Before the execution steps see more information for the deployment of the templa
 5. **Start the Provider App**
    
   Run the provider app to expose the published service:
-  You shoud see [NEF's guide](https://github.com/FRONT-research-group/NEF/blob/integrate_security/README.md) in case you want to use it as provider app.
+  You shoud see [Mock Slice Manager's guide](https://github.com/vlanx/mock-slice-manager/blob/master/README.md) in case you want to use it as provider app.
 
 6. **Start the xAPP**
 
-Run the xAPP dummy app to consume invoker's api and receive provider's app data:
+Run the xAPP mock app to consume invoker's api and receive provider's app data:
 ```bash
 cd ocf-net-app-integration/xAPP
 python dummy_app.py
