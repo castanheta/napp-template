@@ -1,4 +1,3 @@
-import os
 from typing import Dict, Any, Optional, Tuple
 import requests
 from requests import Response
@@ -16,28 +15,10 @@ class GatewayService:
         method: str,
         target_url: str,
         params: Optional[Dict[str, str]] = None,
-        json_body: Optional[Dict[str, Any]] = None
+        json_body: Optional[Dict[str, Any]] = None,
+        access_token: Optional[str] = None
     ) -> Tuple[bytes, int, Optional[str]]:
-        """
-        Forward an HTTP request to the target URL with authorization.
-        
-        Args:
-            method: HTTP method (GET, POST, PUT, DELETE, PATCH)
-            target_url: The destination URL to forward the request to
-            params: Query parameters to include in the request
-            json_body: JSON body for POST/PUT/PATCH requests
-            
-        Returns:
-            Tuple of (response content, status code, content type)
-        """
-        # Onboard the invoker to get a fresh JWT token on each request
-        try:
-            access_token = onboard_invoker()
-            print(f"Successfully onboarded invoker and obtained JWT token")
-        except Exception as e:
-            print(f"Warning: Failed to onboard invoker: {e}")
-        
-        headers = {"Authorization": f"Bearer {access_token}"}
+        headers = {"Authorization": f"Bearer {access_token}"} if access_token else {}
         
         # Forward the request with the specified method and data
         resp: Response = requests.request(

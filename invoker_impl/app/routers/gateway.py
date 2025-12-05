@@ -3,6 +3,7 @@ from fastapi import APIRouter, Query, Request, HTTPException
 from fastapi.responses import Response as FastAPIResponse
 
 from app.services import GatewayService
+from app.background_tasks import get_jwt_token
 
 router = APIRouter(tags=["gateway"])
 gateway_service = GatewayService()
@@ -13,18 +14,6 @@ async def forward_request(
     target_url: str = Query(..., description="The target URL to forward the request to"),
     request: Request = None
 ) -> FastAPIResponse:
-    """
-    Forward an HTTP request to the target URL with any method.
-    
-    Supports: GET, POST, PUT, DELETE, PATCH
-    
-    Args:
-        target_url: The destination URL to forward the request to
-        request: The incoming FastAPI request object
-        
-    Returns:
-        Response from the target URL with the same status code and content type
-    """
     # Extract additional query parameters (excluding target_url)
     params = dict(request.query_params)
     params.pop("target_url", None)
@@ -37,12 +26,18 @@ async def forward_request(
         except:
             json_body = None
     
+    # Get JWT token from background task
+    jwt_token = get_jwt_token()
+    if not jwt_token:
+        raise HTTPException(status_code=503, detail="JWT token not available yet")
+    
     try:
         content, status_code, content_type = gateway_service.forward_request(
             method=request.method,
             target_url=target_url,
             params=params if params else None,
-            json_body=json_body
+            json_body=json_body,
+            access_token=jwt_token
         )
         return FastAPIResponse(
             content=content,
