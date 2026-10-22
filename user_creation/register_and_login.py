@@ -38,12 +38,13 @@ def main():
     log_result = __log_to_capif(variables)
     admintoken = log_result["access_token"]
     postcreation = __create_user(admintoken, variables)
-    uuid = postcreation["uuid"]
-    logger.info(uuid)
+    uuid = postcreation.get("uuid")
+    if uuid:
+        logger.info(uuid)
 
 def __log_to_capif(variables):
     logger.info("Logging in to CAPIF")
-    capif_register_url = "https://" + variables["register_host"].strip() + ":" + variables["capif_register_port"] + "/"
+    capif_register_url = variables.get("register_scheme", "https") + "://" + variables["register_host"].strip() + ":" + variables["capif_register_port"] + "/"
     try:
         url = capif_register_url + "login"
 
@@ -65,7 +66,7 @@ def __log_to_capif(variables):
 
 def __create_user(admin_token, variables):
     logger.info("Creating user in CAPIF")
-    capif_register_url = "https://" + variables["register_host"].strip() + ":" + variables["capif_register_port"] + "/"
+    capif_register_url = variables.get("register_scheme", "https") + "://" + variables["register_host"].strip() + ":" + variables["capif_register_port"] + "/"
     try:
         url = capif_register_url + "createUser"
         payload = {
@@ -85,6 +86,11 @@ def __create_user(admin_token, variables):
         response = requests.request(
             "POST", url, headers=headers, data=json.dumps(payload), verify=False, timeout=10
         )
+        if response.status_code == 409:
+            logger.warning("User '%s' already exists in CAPIF; skipping creation. "
+                           "Change 'capif_username' in capif_sdk_register.json to create a new one.",
+                           variables["capif_username"])
+            return {}
         response.raise_for_status()
         response_payload = json.loads(response.text)
         logger.info("User created successfully with the following response_payload: %s", response_payload)

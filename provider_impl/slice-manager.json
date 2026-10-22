@@ -2,7 +2,7 @@
     "apiName": "slice-manager",
     "aefProfiles": [
         {
-            "aefId": "AEFecc7e558212a77864c2b21322d2b21",
+            "aefId": "AEFe089eeebe507862bd29072d1f92906",
             "versions": [
                 {
                     "apiVersion": "v1",
@@ -338,7 +338,7 @@
                     "securityMethods": [
                         "OAUTH"
                     ],
-                    "ipv4Addr": "10.255.32.139"
+                    "ipv4Addr": "10.255.32.133"
                 }
             ]
         }

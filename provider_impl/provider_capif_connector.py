@@ -1,13 +1,13 @@
 import os
 from opencapif_sdk import capif_provider_connector, api_schema_translator
 
-PROVIDER_API_HOST = os.getenv('PROVIDER_API_HOST', '10.255.32.139')
+PROVIDER_API_HOST = os.getenv('PROVIDER_API_HOST', '10.255.32.115')
 PROVIDER_API_PORT = os.getenv('PROVIDER_API_PORT', '8000')
 PROVIDER_CONFIG_FILE = os.getenv('PROVIDER_CONFIG_FILE', './provider_config_sample.json')
 PROVIDER_OPENAPI_FILE = os.getenv('PROVIDER_OPENAPI_FILE', './openapi.yaml')
-PROVIDER_API_DESC_FILE = os.getenv('PROVIDER_API_DESC_FILE', './slice-manager.json') # should match the prefix of the URL
+PROVIDER_API_DESC_FILE = os.getenv('PROVIDER_API_DESC_FILE', './slice-manager1.json') # should match the prefix of the URL
 
-API_URL = f"https://{PROVIDER_API_HOST}:{PROVIDER_API_PORT}/slice-manager/v1"
+API_URL = f"https://{PROVIDER_API_HOST}:{PROVIDER_API_PORT}/slice-manager1/v1"
 
 def showcase_capif_nef_connector_publish():
     """
